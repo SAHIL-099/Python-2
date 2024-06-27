@@ -3,21 +3,36 @@
 
 
 import pandas as pd
-
-df = pd.read_csv('Position_Salaries.csv')
-df.drop('Position', axis=1, inplace=True)
-y = df['Salary']
-x = df[['Level']]
-
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
 
+# Load the dataset
+df = pd.read_csv('Position_Salaries.csv')
+df.drop('Position', axis=1, inplace=True)
+
+# Extract the features and target variable
+y = df['Salary']
+x = df[['Level']]
+
+# Create a PolynomialFeatures object with degree 3
 poly = PolynomialFeatures(degree=3)
+
+# Transform the features using the PolynomialFeatures object
 x_poly = poly.fit_transform(x)
-job_position_poly = poly.transform([[6.5]])
 
-lr = LinearRegression()
-model = lr.fit(x_poly, y)
-predicted_salary = model.predict(job_position_poly)
+# Create a LinearRegression model
+model = LinearRegression()
 
-print("salary", predicted_salary)
+# Fit the model to the polynomial features and target variable
+model.fit(x_poly, y)
+
+# Create a new data point with Level 6.5
+new_data = pd.DataFrame({"Level": [6.5]})
+
+# Transform the new data point using the PolynomialFeatures object
+new_data_poly = poly.transform(new_data)
+
+# Predict the salary for the new data point
+predicted_salary = model.predict(new_data_poly)
+
+print("Predicted salary:", predicted_salary)
