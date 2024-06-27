@@ -12,24 +12,11 @@ df=pd.get_dummies(df,drop_first=True)
 y=df['Outcome']
 x=df.drop('Outcome',axis=1)
 
-
 from sklearn.model_selection import train_test_split
 x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=1)
 
 from sklearn.neighbors import KNeighborsClassifier
-
-knn=KNeighborsClassifier(n_neighbors=14)
-
-knn.fit(x_train,y_train)
-y_pred=knn.predict(x_test)
-
-
 from sklearn.metrics import accuracy_score
-
-
-ac=accuracy_score(y_test,y_pred)
-print(ac)
-
 
 k=[]
 for i in range(1,615):
@@ -38,6 +25,13 @@ for i in range(1,615):
     y_pred=knn.predict(x_test)
     ac=accuracy_score(y_test,y_pred)
     k.append(ac)
-    
-print(k.index(max(k)))
 
+best_index = k.index(max(k)) + 1  # Find the index of the maximum accuracy score and add 1
+print(best_index)
+knn=KNeighborsClassifier(n_neighbors=best_index)
+
+knn.fit(x_train,y_train)
+y_pred=knn.predict(x_test)
+
+ac=accuracy_score(y_test,y_pred)
+print(ac)

@@ -28,7 +28,7 @@ tp=cm[1][1]
 acc=((tn+tp)/(tn+tp+fp+fn))
 print("acc",acc)
 
-sensi=((tn)/(tn+fp))
+sensi=((tp)/(tp+fn))
 print("sensi",sensi)
 
 
