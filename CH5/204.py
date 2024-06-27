@@ -6,7 +6,6 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 
 df= pd.read_csv("Placement.csv")
-
 y=df['package']
 x=df.drop('package',axis=1)
 
@@ -15,13 +14,18 @@ lr=LinearRegression()
 model=lr.fit(x,y)
 
 
-def predict_y(x_value):
-    return model.predict([[x_value]])
-
 print("coef:",model.coef_)
 print("intercept",model.intercept_)
 
 
-x_value=5
-print("Predicted value of y:",predict_y(x_value))
+def fun(val):
+    data=pd.DataFrame({"cgpa":[val]})
+    return data
+
+
+ans=fun(6.89)
+y_pred=model.predict(ans)
+
+print(y_pred)
+
 
