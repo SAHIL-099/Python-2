@@ -1,0 +1,2 @@
+# Write a Program of Web scraping using BeautifulSoup to scrape the given data from the given HTML file. In the given HTML file, you’ll find 50 
+# Movies. Scrape the Movie Title, Year and Rating of that particular movie and make a DataFrame of the same. Sample Snippet of Output
