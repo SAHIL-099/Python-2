@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    <h4>Update Student Information</h4>
+    <!-- Correct action URL should point to the specific student's update view -->
+    <form method="post" action="{% url 'update' student.id %}">
+        {% csrf_token %}
+        Enter Roll Number: <input type="number" name="rollno" value="{{ student.roll }}" required><br>
+        Enter Name: <input type="text" name="name" value="{{ student.name }}" required><br>
+        Enter Division: <input type="text" name="division" value="{{ student.division }}" required><br>
+        <button type="submit">Update</button>
+    </form>
+    <a href="{% url 'student' %}">Back to Home</a>
+</div>
+
+{% endblock content %}

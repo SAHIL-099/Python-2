@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="query" placeholder="Enter book name or author name" style="width: 200px;"><br><br>
+        <button type="submit">Search</button>
+    </form>
+    
+<br>
+
+{% if books %}
+<table border="1">
+    <tr>
+        <th>title</th>
+        <th>author</th>
+        <th>publication_date</th>
+        <th>price</th>
+        <th>type</th>
+    </tr>
+
+    {% for b in books%}
+    <tr>
+        <td>{{b.name}}</td>
+        <td>{{b.author}}</td>
+        <td>{{b.publication_date}}</td>
+        <td>{{b.price}}</td>
+        <td>{{b.type}}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+{% else %}
+<p>No books found</p>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h2>Search Student by Roll No</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="number" name="roll" placeholder="Enter Roll No" required>
+        <button type="submit">Search</button>
+    </form>
+    <br>
+    
+    {% if students %}
+    <table border="1">
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Division</th>
+        </tr>
+        {% for s in students %}
+        <tr>
+            <td>{{ s.roll_number }}</td>
+            <td>{{ s.name }}</td>
+            <td>{{ s.division }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No student found.</p>
+    {% endif %}
+    
+</body>
+</html>
