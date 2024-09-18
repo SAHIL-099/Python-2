@@ -73,7 +73,7 @@ print(df.shape)
 print(df.isna().sum())
 
 # 11.Remove first 3 columns from this Data Frame. (0.5 marks)
-print(df.drop(df.index[:3]))
+df = df.drop(df.columns[:3], axis=1)
 
 # 12.Remove first 10 rows from this Data Frame. (0.5 marks)
 
