@@ -26,10 +26,10 @@ knn.fit(x_train,y_train)
 y_pred=knn.predict(x_test)
 
 cm=confusion_matrix(y_test,y_pred)
-tp=cm[0][0]
-fp=cm[0][1]
-fn=cm[1][0]
-tn=cm[1][1]
+tn=cm[0][0]
+tp=cm[1][1]
+fn=cm[0][1]
+fp=cm[1][0]
 ac=accuracy_score(y_test,y_pred)
 print("accuracy",ac)
 

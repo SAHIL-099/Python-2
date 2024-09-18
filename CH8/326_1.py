@@ -18,7 +18,10 @@ while True:
     data=conn.recv(1024).decode()
     if data==" ":
         break
-    conn.send(data.encode())
+    
+    print(data)
+    ans=input("=>")
+    conn.send(ans.encode())
     
 server_socket.close()
     

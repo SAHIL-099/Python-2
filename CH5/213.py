@@ -12,7 +12,7 @@ df=pd.read_csv("car.csv")
 df['Age_car']=2023-df['Year']
 
 y=df['Selling_Price']
-x=df[['Age_car', 'Kms_Driven', 'Fuel_Type', 'Seller_Type', 'Transmission']]
+x=df[['Age_car','Kms_Driven', 'Fuel_Type', 'Seller_Type', 'Transmission']]
 
 x=pd.get_dummies(x,drop_first=True)
 

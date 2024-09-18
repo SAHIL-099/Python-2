@@ -5,7 +5,6 @@ import socket;
 host=socket.gethostname()
 port=4545
 a=(host,port)
-
 server_socket=socket.socket()
 server_socket.bind(a)
 server_socket.listen()

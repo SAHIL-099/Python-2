@@ -19,12 +19,13 @@ dt.fit(x,y)
 y_pred=dt.predict(x)
 
 
-from sklearn.metrics import accuracy_score,confusion_matrix
+from sklearn.metrics import confusion_matrix
 cm=confusion_matrix(y,y_pred)
 tn=cm[0][0]
-fp=cm[0][1]
-fn=cm[1][0]
 tp=cm[1][1]
+fn=cm[0][1]
+fp=cm[1][0]
+
 acc=((tn+tp)/(tn+tp+fp+fn))
 print("acc",acc)
 

@@ -13,3 +13,8 @@ result=box.find_all("a")
 for i in result:
  print(i.text)
 
+
+# # offline
+
+# s=BeautifulSoup(open("titanic.html",'r',encoding="utf-8"))
+# print(s.prettify())
